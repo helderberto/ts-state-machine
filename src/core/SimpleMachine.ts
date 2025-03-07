@@ -1,17 +1,17 @@
 import type { Action, Listener, Machine, Reducer } from './types';
 
 // Base implementation of a state machine
-export class SimpleMachine<TState> implements Machine<TState> {
+export class SimpleMachine<TState, TActionType = string> implements Machine<TState, TActionType> {
   // Current machine state
   private state: TState;
 
   // Function to process state changes
-  private reducer: Reducer<TState>;
+  private reducer: Reducer<TState, TActionType>;
 
   // Array of functions to be called when a state changes
   private listeners: Listener[] = [];
 
-  constructor(initialState: TState, reducer: Reducer<TState>) {
+  constructor(initialState: TState, reducer: Reducer<TState, TActionType>) {
     this.state = initialState;
     this.reducer = reducer;
   }
@@ -27,7 +27,7 @@ export class SimpleMachine<TState> implements Machine<TState> {
   }
 
   // Process an action and updates the state if necessary
-  public dispatch(action: Action): void {
+  public dispatch(action: Action<TActionType>): void {
     // Evaluates the next state using the reducer
     const nextState = this.reducer(this.state, action);
 
