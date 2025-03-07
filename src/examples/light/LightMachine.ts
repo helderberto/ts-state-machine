@@ -1,15 +1,15 @@
 // All possible states for a bulb
-type LightState = 'on' | 'off'
+type LightState = 'on' | 'off';
 
 // Possible events
 type LightEvent = {
-  type: 'TOGGLE'
-}
+  type: 'TOGGLE';
+};
 
 // Context for additional data
 type LightContext = {
   timesTurnedOn: number;
-}
+};
 
 export class LightMachine {
   private state: LightState;
@@ -19,16 +19,16 @@ export class LightMachine {
     // Initial state
     this.state = 'off';
     this.context = {
-      timesTurnedOn: 0
-    }
+      timesTurnedOn: 0,
+    };
   }
 
   // Get current state
   public getState() {
     return {
       value: this.state,
-      context: this.context
-    }
+      context: this.context,
+    };
   }
 
   // Handle transitions
@@ -51,4 +51,3 @@ export class LightMachine {
     }
   }
 }
-

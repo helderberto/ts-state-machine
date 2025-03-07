@@ -15,15 +15,15 @@ describe('LightMachine', () => {
   it('should toggle from off to on', () => {
     const lightMachine = new LightMachine();
 
-    lightMachine.transition({ type: 'TOGGLE' })
+    lightMachine.transition({ type: 'TOGGLE' });
 
     expect(lightMachine.getState()).toEqual({
       value: 'on',
       context: {
-        timesTurnedOn: 1
-      }
-    })
-  })
+        timesTurnedOn: 1,
+      },
+    });
+  });
 
   it('should toggle from on to off', () => {
     const lightMachine = new LightMachine();
@@ -37,8 +37,8 @@ describe('LightMachine', () => {
     expect(lightMachine.getState()).toEqual({
       value: 'off',
       context: {
-        timesTurnedOn: 1
-      }
-    })
-  })
+        timesTurnedOn: 1,
+      },
+    });
+  });
 });
